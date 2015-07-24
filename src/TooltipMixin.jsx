@@ -22,7 +22,7 @@ let TooltipMixin = {
 	},
 
 	componentDidMount() {
-		this._svg_node = this.getDOMNode().getElementsByTagName("svg")[0];
+		this._svg_node = React.findDOMNode(this).getElementsByTagName("svg")[0];
 	},
 
 	onMouseEnter(e, data) {

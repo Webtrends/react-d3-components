@@ -27,7 +27,9 @@ let Tooltip = React.createClass({
 		};
 
 		return (
-				<div className="tooltip" style={style}>{html}</div>
+            <div className="chart-tooltip" style={style}>
+                {html}
+            </div>
 		);
 	}
 });

@@ -31,7 +31,7 @@
 	"webpack": "^1.7.3"
   },
   "peerDependencies": {
-	"react": "^0.13.1"
+	"react": "^0.13.3"
   },
   "scripts": {
 	"prepublish": "babel -c -d ./lib ./src/",
