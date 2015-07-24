@@ -107,45 +107,47 @@ let BarChart = React.createClass({
 		return (
 				<div>
 				<Chart height={height} width={width} margin={margin}>
-				<DataSet
-			data={data}
-			xScale={xScale}
-			yScale={yScale}
-			colorScale={colorScale}
-			values={values}
-			label={label}
-			y={y}
-			y0={y0}
-			x={x}
-			onMouseEnter={this.onMouseEnter}
-			onMouseLeave={this.onMouseLeave}
-				/>
 
-				<Axis
-			className={"x axis"}
-			orientation={"bottom"}
-			scale={xScale}
-			height={innerHeight}
-			width={innerWidth}
-			{...xAxis}
-				/>
+                    <Axis
+                        className={"x axis"}
+                        orientation={"bottom"}
+                        scale={xScale}
+                        height={innerHeight}
+                        width={innerWidth}
+                        {...xAxis}
+                    />
 
-				<Axis
-			className={"y axis"}
-			orientation={"left"}
-			scale={yScale}
-			height={innerHeight}
-			width={innerWidth}
-			{...yAxis}
-				/>
-				</Chart>
+                    <Axis
+                        className={"y axis"}
+                        orientation={"left"}
+                        scale={yScale}
+                        height={innerHeight}
+                        width={innerWidth}
+                        {...yAxis}
+                    />
 
-				<Tooltip
-			hidden={this.state.tooltip.hidden}
-			top={this.state.tooltip.top}
-			left={this.state.tooltip.left}
-			html={this.state.tooltip.html}/>
-				</div>
+                    <DataSet
+                        data={data}
+                        xScale={xScale}
+                        yScale={yScale}
+                        colorScale={colorScale}
+                        values={values}
+                        label={label}
+                        y={y}
+                        y0={y0}
+                        x={x}
+                        onMouseEnter={this.onMouseEnter}
+                        onMouseLeave={this.onMouseLeave}
+                            />
+
+                        </Chart>
+
+                        <Tooltip
+                    hidden={this.state.tooltip.hidden}
+                    top={this.state.tooltip.top}
+                    left={this.state.tooltip.left}
+                    html={this.state.tooltip.html}/>
+                        </div>
 		);
 	}
 });
