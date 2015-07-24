@@ -13,7 +13,10 @@ let Axis = React.createClass({
 		className: React.PropTypes.string,
 		zero: React.PropTypes.number,
 		orientation: React.PropTypes.oneOf(['top', 'bottom', 'left', 'right']).isRequired,
-		label: React.PropTypes.string
+		label: React.PropTypes.string,
+        stroke: React.PropTypes.string,
+        tickStroke: React.PropTypes.string,
+        fill: React.PropTypes.string
 	},
 
 	getDefaultProps() {
@@ -26,7 +29,10 @@ let Axis = React.createClass({
 			outerTickSize: 6,
 			className: "axis",
 			zero: 0,
-			label: ""
+			label: "",
+            stroke: "#ccc",
+            tickStroke: "#ccc",
+            fill: "none"
 		};
 	},
 
@@ -59,7 +65,10 @@ let Axis = React.createClass({
 			 orientation,
 			 className,
 			 zero,
-			 label} = this.props;
+			 label,
+             stroke,
+             tickStroke,
+             fill} = this.props;
 
 		let ticks = tickValues == null ? (scale.ticks ? scale.ticks.apply(scale, tickArguments) : scale.domain()) : tickValues;
 
@@ -115,14 +124,14 @@ let Axis = React.createClass({
 			let translate = transform.replace("{}", position);
 			return (
 					<g key={`${tick}.${index}`} className="tick" transform={translate}>
-					<line x2={x2} y2={y2} stroke="#aaa"/>
+					<line x2={x2} y2={y2} stroke={tickStroke}/>
 					<text x={x} y={y} dy={dy} textAnchor={textAnchor}>
 					{tickFormat(tick)}</text>
 					</g>
 			);
 		});
 
-		let pathElement = <path className="domain" d={d} fill="none" stroke="#aaa"/>;
+		let pathElement = <path className="domain" d={d} fill={fill} stroke={stroke}/>;
 
 		return (
 				<g ref="axis" className={className} transform={this._getTranslateString()} style={{shapeRendering: 'crispEdges'}}>
