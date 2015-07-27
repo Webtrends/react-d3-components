@@ -5,7 +5,9 @@ let Tooltip = React.createClass({
     propTypes: {
         top: React.PropTypes.number.isRequired,
         left: React.PropTypes.number.isRequired,
-        html: React.PropTypes.string
+        html: React.PropTypes.string,
+        width: React.PropTypes.string,
+        position: React.PropTypes.string
     },
 
     getDefaultProps() {
@@ -23,7 +25,8 @@ let Tooltip = React.createClass({
             display: hidden ? "none" : "block",
             position: "fixed",
             top: top,
-            left: left
+            left: left,
+            width: this.props.width
         };
 
         return (

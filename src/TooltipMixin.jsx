@@ -1,5 +1,6 @@
 let React = require('react');
 let d3 = require('d3');
+let Constants = require('./Constants');
 
 let TooltipMixin = {
     propTypes: {
@@ -32,10 +33,21 @@ let TooltipMixin = {
 
         e.preventDefault();
 
+
+
         let {margin, tooltipHtml} = this.props;
 
         let svg = this._svg_node;
         let position;
+
+        let windowWidth = Math.min(window.innerWidth, document.body.clientWidth);
+        let tooltipWidth = Constants.TOOLTIP_WIDTH[this.props.tooltipWidth.toUpperCase()];
+
+        // If tooltip is wider than the space between the cursor and the end of the svg, flip to other side of cursor
+        let positioningOffset = e.clientX + tooltipWidth > windowWidth ?
+            -(tooltipWidth + this.props.tooltipOffset.left) :
+            this.props.tooltipOffset.left;
+
         if (svg.createSVGPoint) {
             var point = svg.createSVGPoint();
             point.x = e.clientX, point.y = e.clientY;
@@ -50,7 +62,7 @@ let TooltipMixin = {
         this.setState({
             tooltip: {
                 top: e.clientY + this.props.tooltipOffset.top,
-                left: e.clientX + this.props.tooltipOffset.left,
+                left: e.clientX + positioningOffset,
                 hidden: false,
                 html: this._tooltipHtml(data, position)
             }
