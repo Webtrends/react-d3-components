@@ -2,36 +2,36 @@ let React = require('react');
 let d3 = require('d3');
 
 let Tooltip = React.createClass({
-	propTypes: {
-		top: React.PropTypes.number.isRequired,
-		left: React.PropTypes.number.isRequired,
-		html: React.PropTypes.string
-	},
+    propTypes: {
+        top: React.PropTypes.number.isRequired,
+        left: React.PropTypes.number.isRequired,
+        html: React.PropTypes.string
+    },
 
-	getDefaultProps() {
-		return {
-			top: 150,
-			left: 100,
-			html: ""
-		};
-	},
+    getDefaultProps() {
+        return {
+            top: 150,
+            left: 100,
+            html: ""
+        };
+    },
 
-	render() {
-		let {top, left, hidden, html} = this.props;
+    render() {
+        let {top, left, hidden, html} = this.props;
 
-		let style = {
-			display: hidden ? "none" : "block",
-			position: "fixed",
-			top: top,
-			left: left
-		};
+        let style = {
+            display: hidden ? "none" : "block",
+            position: "fixed",
+            top: top,
+            left: left
+        };
 
-		return (
-            <div className="chart-tooltip" style={style}>
-                {html}
-            </div>
-		);
-	}
+        return (
+                    <div className="chart-tooltip" style={style}>
+                                        {html}
+                                </div>
+        );
+    }
 });
 
 module.exports = Tooltip;
